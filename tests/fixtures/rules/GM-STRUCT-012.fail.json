@@ -1,0 +1,56 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "Main",
+  "trees": [
+    {
+      "name": "Main",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_A",
+          "name": "Radius",
+          "in_out": "INPUT",
+          "type": "NodeSocketFloat",
+          "default": 1
+        }
+      ],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "Other"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "Other",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [
+        {
+          "identifier": "Socket_A",
+          "name": "Other Radius",
+          "in_out": "INPUT",
+          "type": "NodeSocketFloat",
+          "default": 2
+        }
+      ],
+      "nodes": [],
+      "links": []
+    }
+  ],
+  "flatten_interfaces": true
+}

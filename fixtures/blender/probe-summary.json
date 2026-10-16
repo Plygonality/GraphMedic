@@ -1,0 +1,88 @@
+{
+  "blender_version": "4.5.14 LTS",
+  "blender_version_tuple": [
+    4,
+    5,
+    14
+  ],
+  "build_note": "Probed with Blender 4.5.14 LTS, build hash 62c1db4208e8, on 2026-10-16.",
+  "function_node_math": "Error: Node type FunctionNodeMath undefined\n",
+  "realize_instances_inputs": [
+    "Geometry",
+    "Selection",
+    "Realize All",
+    "Depth"
+  ],
+  "realize_instances_outputs": [
+    "Geometry"
+  ],
+  "store_named_attribute_domains": [
+    "POINT",
+    "EDGE",
+    "FACE",
+    "CORNER",
+    "CURVE",
+    "INSTANCE",
+    "LAYER"
+  ],
+  "named_attribute_has_domain_property": false,
+  "named_attribute_inputs": [
+    "Name"
+  ],
+  "grids": {
+    "0_0": {
+      "vertices": 0,
+      "edges": 0,
+      "polygons": 0
+    },
+    "0_3": {
+      "vertices": 0,
+      "edges": 0,
+      "polygons": 0
+    },
+    "1_1": {
+      "vertices": 1,
+      "edges": 0,
+      "polygons": 0
+    },
+    "1_2": {
+      "vertices": 2,
+      "edges": 1,
+      "polygons": 0
+    },
+    "2_1": {
+      "vertices": 2,
+      "edges": 1,
+      "polygons": 0
+    },
+    "2_2": {
+      "vertices": 4,
+      "edges": 4,
+      "polygons": 1
+    }
+  },
+  "points_via_points_to_vertices": {
+    "0": 0,
+    "1": 1,
+    "4": 4
+  },
+  "mesh_line_total": {
+    "0": 0,
+    "1": 1,
+    "2": 2
+  },
+  "math_divide": {
+    "operation": "DIVIDE",
+    "divisor_identifier": "Value_001",
+    "dividend_identifier": "Value",
+    "value_002_enabled": false
+  },
+  "simulation_paired": true,
+  "repeat_paired": true,
+  "link_validity": {
+    "float_to_vector": {"valid": true, "from": "VALUE", "to": "VECTOR"},
+    "geometry_to_float": {"valid": false, "from": "GEOMETRY", "to": "VALUE"},
+    "float_to_float": {"valid": true},
+    "int_to_float": {"valid": true, "from": "INT", "to": "VALUE"}
+  }
+}

@@ -1,0 +1,417 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "version_string": "4.5.14 LTS",
+    "build_hash": "62c1db4208e8",
+    "verified": true
+  },
+  "capture": {
+    "tool": "tools/export_geometry_nodes.py",
+    "host_run": true,
+    "note": "Direct bpy dump from Blender. gn-as-code was not available, so this is not that serializer."
+  },
+  "closed_attribute_pipeline": false,
+  "flatten_interfaces": false,
+  "root": "Scatter",
+  "trees": [
+    {
+      "name": "Scatter",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_3",
+          "name": "Geometry",
+          "in_out": "OUTPUT",
+          "socket_type": "NodeSocketGeometry",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_0",
+          "name": "Geometry",
+          "in_out": "INPUT",
+          "socket_type": "NodeSocketGeometry",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_1",
+          "name": "Density",
+          "in_out": "INPUT",
+          "socket_type": "NodeSocketFloat",
+          "type": "NodeSocketFloat",
+          "default_value": 4.0,
+          "min_value": 0.0,
+          "max_value": 100.0
+        },
+        {
+          "identifier": "Socket_2",
+          "name": "Seed",
+          "in_out": "INPUT",
+          "socket_type": "NodeSocketInt",
+          "type": "NodeSocketInt",
+          "default_value": 7,
+          "min_value": 0,
+          "max_value": 100000
+        }
+      ],
+      "nodes": [
+        {
+          "id": "Group Input",
+          "name": "Group Input",
+          "type": "NodeGroupInput",
+          "label": "",
+          "inputs": [],
+          "outputs": [
+            {
+              "identifier": "Socket_0",
+              "name": "Geometry",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "Socket_1",
+              "name": "Density",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloat",
+              "enabled": true,
+              "default": 4.0
+            },
+            {
+              "identifier": "Socket_2",
+              "name": "Seed",
+              "type": "INT",
+              "bl_idname": "NodeSocketInt",
+              "enabled": true,
+              "default": 7
+            }
+          ],
+          "parameters": {},
+          "location": [
+            -600.0,
+            0.0
+          ]
+        },
+        {
+          "id": "Group Output",
+          "name": "Group Output",
+          "type": "NodeGroupOutput",
+          "label": "",
+          "inputs": [
+            {
+              "identifier": "Socket_3",
+              "name": "Geometry",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            }
+          ],
+          "outputs": [],
+          "parameters": {
+            "is_active_output": true
+          },
+          "location": [
+            340.0,
+            0.0
+          ]
+        },
+        {
+          "id": "Distribute Points on Faces",
+          "name": "Distribute Points on Faces",
+          "type": "GeometryNodeDistributePointsOnFaces",
+          "label": "",
+          "inputs": [
+            {
+              "identifier": "Mesh",
+              "name": "Mesh",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "Selection",
+              "name": "Selection",
+              "type": "BOOLEAN",
+              "bl_idname": "NodeSocketBool",
+              "enabled": true,
+              "default": true
+            },
+            {
+              "identifier": "Distance Min",
+              "name": "Distance Min",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloatDistance",
+              "enabled": false,
+              "is_unavailable": true,
+              "default": 0.0
+            },
+            {
+              "identifier": "Density Max",
+              "name": "Density Max",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloat",
+              "enabled": false,
+              "is_unavailable": true,
+              "default": 10.0
+            },
+            {
+              "identifier": "Density",
+              "name": "Density",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloat",
+              "enabled": true,
+              "default": 10.0
+            },
+            {
+              "identifier": "Density Factor",
+              "name": "Density Factor",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloatFactor",
+              "enabled": false,
+              "is_unavailable": true,
+              "default": 1.0
+            },
+            {
+              "identifier": "Seed",
+              "name": "Seed",
+              "type": "INT",
+              "bl_idname": "NodeSocketInt",
+              "enabled": true,
+              "default": 0
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Points",
+              "name": "Points",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "Normal",
+              "name": "Normal",
+              "type": "VECTOR",
+              "bl_idname": "NodeSocketVector",
+              "enabled": true,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "identifier": "Rotation",
+              "name": "Rotation",
+              "type": "ROTATION",
+              "bl_idname": "NodeSocketRotation",
+              "enabled": true,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "parameters": {
+            "distribute_method": "RANDOM",
+            "use_legacy_normal": false
+          },
+          "location": [
+            -300.0,
+            80.0
+          ]
+        },
+        {
+          "id": "Ico Sphere",
+          "name": "Ico Sphere",
+          "type": "GeometryNodeMeshIcoSphere",
+          "label": "",
+          "inputs": [
+            {
+              "identifier": "Radius",
+              "name": "Radius",
+              "type": "VALUE",
+              "bl_idname": "NodeSocketFloatDistance",
+              "enabled": true,
+              "default": 0.2
+            },
+            {
+              "identifier": "Subdivisions",
+              "name": "Subdivisions",
+              "type": "INT",
+              "bl_idname": "NodeSocketInt",
+              "enabled": true,
+              "default": 1
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Mesh",
+              "name": "Mesh",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "UV Map",
+              "name": "UV Map",
+              "type": "VECTOR",
+              "bl_idname": "NodeSocketVector",
+              "enabled": true,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "parameters": {},
+          "location": [
+            -300.0,
+            -220.0
+          ]
+        },
+        {
+          "id": "Instance on Points",
+          "name": "Instance on Points",
+          "type": "GeometryNodeInstanceOnPoints",
+          "label": "",
+          "inputs": [
+            {
+              "identifier": "Points",
+              "name": "Points",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "Selection",
+              "name": "Selection",
+              "type": "BOOLEAN",
+              "bl_idname": "NodeSocketBool",
+              "enabled": true,
+              "default": true
+            },
+            {
+              "identifier": "Instance",
+              "name": "Instance",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            },
+            {
+              "identifier": "Pick Instance",
+              "name": "Pick Instance",
+              "type": "BOOLEAN",
+              "bl_idname": "NodeSocketBool",
+              "enabled": true,
+              "default": false
+            },
+            {
+              "identifier": "Instance Index",
+              "name": "Instance Index",
+              "type": "INT",
+              "bl_idname": "NodeSocketInt",
+              "enabled": true,
+              "default": 0
+            },
+            {
+              "identifier": "Rotation",
+              "name": "Rotation",
+              "type": "ROTATION",
+              "bl_idname": "NodeSocketRotation",
+              "enabled": true,
+              "default": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "identifier": "Scale",
+              "name": "Scale",
+              "type": "VECTOR",
+              "bl_idname": "NodeSocketVectorXYZ",
+              "enabled": true,
+              "default": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Instances",
+              "name": "Instances",
+              "type": "GEOMETRY",
+              "bl_idname": "NodeSocketGeometry",
+              "enabled": true
+            }
+          ],
+          "parameters": {},
+          "location": [
+            40.0,
+            0.0
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from_node": "Group Input",
+          "from_socket": "Socket_0",
+          "to_node": "Distribute Points on Faces",
+          "to_socket": "Mesh",
+          "valid": true,
+          "muted": false
+        },
+        {
+          "from_node": "Group Input",
+          "from_socket": "Socket_1",
+          "to_node": "Distribute Points on Faces",
+          "to_socket": "Density",
+          "valid": true,
+          "muted": false
+        },
+        {
+          "from_node": "Group Input",
+          "from_socket": "Socket_2",
+          "to_node": "Distribute Points on Faces",
+          "to_socket": "Seed",
+          "valid": true,
+          "muted": false
+        },
+        {
+          "from_node": "Distribute Points on Faces",
+          "from_socket": "Points",
+          "to_node": "Instance on Points",
+          "to_socket": "Points",
+          "valid": true,
+          "muted": false
+        },
+        {
+          "from_node": "Ico Sphere",
+          "from_socket": "Mesh",
+          "to_node": "Instance on Points",
+          "to_socket": "Instance",
+          "valid": true,
+          "muted": false
+        },
+        {
+          "from_node": "Instance on Points",
+          "from_socket": "Instances",
+          "to_node": "Group Output",
+          "to_socket": "Socket_3",
+          "valid": true,
+          "muted": false
+        }
+      ]
+    }
+  ],
+  "comment": "Same tree as the Blender 4.5.14 export. The broken variant's final link is restored to Socket_3."
+}

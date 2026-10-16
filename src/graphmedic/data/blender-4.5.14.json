@@ -1,0 +1,118 @@
+{
+  "host": "blender",
+  "version": "4.5.14",
+  "version_tuple": [4, 5, 14],
+  "build_hash": "62c1db4208e8",
+  "probed": "2026-10-16",
+  "probe_command": "blender --background --python tools/probe_geometry_nodes.py",
+  "notes": [
+    "Socket identifiers and enum values were read from bpy in Blender 4.5.14 LTS.",
+    "Grid Vertices X/Y values below 2 still produce vertices when the other axis is positive. Only a 0 on either axis evaluated to a mesh with 0 vertices. The 4.5 manual sentence about 'smaller than two' is not used as an emptiness predicate.",
+    "Points Count 0 evaluated to 0 vertices after GeometryNodePointsToVertices. Count 1 and Count 4 matched the vertex count.",
+    "Mesh Line Count 0 with count_mode TOTAL evaluated to 0 vertices.",
+    "ShaderNodeMath DIVIDE enables sockets Value and Value_001. Value_001 is the divisor.",
+    "A VALUE output linked to a VECTOR input was is_valid true. An INT output linked to a VALUE input was is_valid true. A GEOMETRY output linked to a VALUE input was is_valid false.",
+    "Named Attribute has a Name input and no domain property. Store Named Attribute stores a domain enum. The 4.5 attributes manual documents automatic domain interpolation, so a custom attribute stored on a different domain from its consumer is not reported as an error.",
+    "The attributes manual states that the domain of a built-in attribute cannot be changed, and that position is the point-domain built-in.",
+    "Simulation and repeat zones were created with pair_with_output. Cycles that contain both ends of a pair are zone feedback, not generic illegal cycles.",
+    "Realize Instances inputs in this build are Geometry, Selection, Realize All, and Depth. The 4.5 manual warns that performance can become much worse with many instances."
+  ],
+  "ignore_socket_identifiers": ["__extend__"],
+  "output_node_types": ["NodeGroupOutput"],
+  "viewer_node_types": ["GeometryNodeViewer"],
+  "zone_pairs": [
+    ["GeometryNodeSimulationInput", "GeometryNodeSimulationOutput"],
+    ["GeometryNodeRepeatInput", "GeometryNodeRepeatOutput"]
+  ],
+  "unrecognised_zone_markers": ["Simulation", "Repeat", "Zone"],
+  "math_divide": {
+    "node_type": "ShaderNodeMath",
+    "operation_property": "operation",
+    "operation_value": "DIVIDE",
+    "dividend_socket": "Value",
+    "divisor_socket": "Value_001"
+  },
+  "value_nodes": {
+    "ShaderNodeValue": {"output": "Value", "source": "output_default"},
+    "FunctionNodeInputString": {"output": "String", "source": "parameter", "parameter": "string"}
+  },
+  "empty_generators": [
+    {
+      "node_type": "GeometryNodeMeshGrid",
+      "kind": "any_socket_equals",
+      "sockets": ["Vertices X", "Vertices Y"],
+      "equals": 0,
+      "message": "Grid vertex count is 0 on {socket}",
+      "evidence": "Blender 4.5.14 evaluation: Vertices (0,0), (0,3) yield 0 vertices. Vertices (1,1) yields 1 vertex and (1,2) yields 2 vertices, so values of 1 are not reported."
+    },
+    {
+      "node_type": "GeometryNodePoints",
+      "kind": "socket_equals",
+      "socket": "Count",
+      "equals": 0,
+      "message": "Points Count is 0",
+      "evidence": "Blender 4.5.14 evaluation through GeometryNodePointsToVertices: Count 0 yields 0 vertices, Count 1 yields 1, Count 4 yields 4."
+    },
+    {
+      "node_type": "GeometryNodeMeshLine",
+      "kind": "socket_equals",
+      "socket": "Count",
+      "equals": 0,
+      "when_parameter": {"count_mode": "TOTAL"},
+      "default_parameters": {"count_mode": "TOTAL"},
+      "message": "Mesh Line Count is 0 in Total mode",
+      "evidence": "Blender 4.5.14 evaluation with count_mode TOTAL: Count 0 yields 0 vertices, Count 1 yields 1, Count 2 yields 2."
+    }
+  ],
+  "count_bounds": [
+    {
+      "node_type": "GeometryNodePoints",
+      "kind": "socket",
+      "socket": "Count",
+      "label": "Points Count"
+    },
+    {
+      "node_type": "GeometryNodeMeshLine",
+      "kind": "socket",
+      "socket": "Count",
+      "when_parameter": {"count_mode": "TOTAL"},
+      "default_parameters": {"count_mode": "TOTAL"},
+      "label": "Mesh Line Count"
+    },
+    {
+      "node_type": "GeometryNodeMeshGrid",
+      "kind": "product",
+      "sockets": ["Vertices X", "Vertices Y"],
+      "label": "Grid Vertices X * Vertices Y"
+    }
+  ],
+  "expensive_nodes": [
+    {
+      "node_type": "GeometryNodeRealizeInstances",
+      "reason": "The Blender 4.5 manual says performance can become much worse when Realize Instances runs on many instances of complex geometry.",
+      "reference": "https://docs.blender.org/manual/en/4.5/modeling/geometry_nodes/instances/realize_instances.html"
+    }
+  ],
+  "realize_node_type": "GeometryNodeRealizeInstances",
+  "instance_on_points_type": "GeometryNodeInstanceOnPoints",
+  "attribute_store": {
+    "node_type": "GeometryNodeStoreNamedAttribute",
+    "name_socket": "Name",
+    "domain_property": "domain"
+  },
+  "attribute_read": {
+    "node_type": "GeometryNodeInputNamedAttribute",
+    "name_socket": "Name"
+  },
+  "builtin_attribute_domains": {
+    "position": "POINT"
+  },
+  "domain_interpolation": "automatic",
+  "domain_interpolation_reference": "https://docs.blender.org/manual/en/4.5/modeling/geometry_nodes/attributes_reference.html",
+  "builtin_domain_reference": "https://docs.blender.org/manual/en/4.5/modeling/geometry_nodes/attribute/store_named_attribute.html",
+  "link_validity_observed": [
+    {"from": "VALUE", "to": "VECTOR", "valid": true},
+    {"from": "INT", "to": "VALUE", "valid": true},
+    {"from": "GEOMETRY", "to": "VALUE", "valid": false}
+  ]
+}

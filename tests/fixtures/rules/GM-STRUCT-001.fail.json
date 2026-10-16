@@ -1,0 +1,75 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "Main",
+  "trees": [
+    {
+      "name": "Main",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_0",
+          "name": "Geometry",
+          "in_out": "INPUT",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_1",
+          "name": "Geometry",
+          "in_out": "OUTPUT",
+          "type": "NodeSocketGeometry"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "Box",
+          "type": "GeometryNodeMeshGrid",
+          "inputs": [
+            {
+              "identifier": "Vertices X",
+              "name": "Vertices X",
+              "type": "INT",
+              "default": 2
+            },
+            {
+              "identifier": "Vertices Y",
+              "name": "Vertices Y",
+              "type": "INT",
+              "default": 2
+            }
+          ],
+          "outputs": [],
+          "parameters": {}
+        },
+        {
+          "id": "Box",
+          "type": "GeometryNodeMeshGrid",
+          "inputs": [
+            {
+              "identifier": "Vertices X",
+              "name": "Vertices X",
+              "type": "INT",
+              "default": 2
+            },
+            {
+              "identifier": "Vertices Y",
+              "name": "Vertices Y",
+              "type": "INT",
+              "default": 2
+            }
+          ],
+          "outputs": [],
+          "parameters": {}
+        }
+      ],
+      "links": []
+    }
+  ]
+}
