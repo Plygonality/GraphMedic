@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      blender:
+        description: Run the Blender export test on a runner that already has Blender
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    name: python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Ruff
+        run: ruff check src tests
+      - name: Pytest
+        run: pytest
+      - name: Demo
+        run: python -m graphmedic demo --out build/demo
+      - name: Package
+        run: python -m build
+      - name: Install wheel and doctor
+        run: |
+          python -m pip install dist/*.whl
+          graphmedic doctor
+
+  blender:
+    name: blender export
+    if: github.event_name == 'workflow_dispatch' && inputs.blender
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Export test
+        env:
+          GRAPHMEDIC_BLENDER: ${{ vars.GRAPHMEDIC_BLENDER }}
+        run: pytest tests/test_blender.py -rs

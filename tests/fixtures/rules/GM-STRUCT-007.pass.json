@@ -1,0 +1,118 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "Main",
+  "trees": [
+    {
+      "name": "Main",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_0",
+          "name": "Geometry",
+          "in_out": "INPUT",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_1",
+          "name": "Geometry",
+          "in_out": "OUTPUT",
+          "type": "NodeSocketGeometry"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "Sim In",
+          "type": "GeometryNodeSimulationInput",
+          "inputs": [],
+          "outputs": [
+            {
+              "identifier": "Item_0",
+              "name": "Item_0",
+              "type": "GEOMETRY"
+            },
+            {
+              "identifier": "Delta Time",
+              "name": "Delta Time",
+              "type": "VALUE"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "Sim Out",
+          "type": "GeometryNodeSimulationOutput",
+          "inputs": [
+            {
+              "identifier": "Item_0",
+              "name": "Item_0",
+              "type": "GEOMETRY"
+            },
+            {
+              "identifier": "Skip",
+              "name": "Skip",
+              "type": "BOOLEAN",
+              "default": false
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Item_0",
+              "name": "Item_0",
+              "type": "GEOMETRY"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "Group Output",
+          "type": "NodeGroupOutput",
+          "inputs": [
+            {
+              "identifier": "Socket_1",
+              "name": "Socket_1",
+              "type": "GEOMETRY"
+            }
+          ],
+          "outputs": [],
+          "parameters": {
+            "is_active_output": true
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "Sim In",
+          "from_socket": "Item_0",
+          "to_node": "Sim Out",
+          "to_socket": "Item_0",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "Sim Out",
+          "from_socket": "Item_0",
+          "to_node": "Sim In",
+          "to_socket": "Item_0",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "Sim Out",
+          "from_socket": "Item_0",
+          "to_node": "Group Output",
+          "to_socket": "Socket_1",
+          "muted": false,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

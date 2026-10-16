@@ -1,0 +1,14 @@
+version = 1
+fail_on = "error"
+
+[budgets]
+max_points = 100000
+
+[style]
+max_group_depth = 8
+
+[limits]
+max_nodes = 20000
+max_bytes = 8000000
+max_depth = 64
+max_files = 500

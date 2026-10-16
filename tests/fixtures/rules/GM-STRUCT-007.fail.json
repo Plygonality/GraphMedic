@@ -1,0 +1,107 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "Main",
+  "trees": [
+    {
+      "name": "Main",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_0",
+          "name": "Geometry",
+          "in_out": "INPUT",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_1",
+          "name": "Geometry",
+          "in_out": "OUTPUT",
+          "type": "NodeSocketGeometry"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "A",
+          "type": "ShaderNodeMath",
+          "inputs": [
+            {
+              "identifier": "Value",
+              "name": "Value",
+              "type": "VALUE",
+              "default": 1
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Value",
+              "name": "Value",
+              "type": "VALUE"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "B",
+          "type": "ShaderNodeMath",
+          "inputs": [
+            {
+              "identifier": "Value",
+              "name": "Value",
+              "type": "VALUE",
+              "default": 1
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Value",
+              "name": "Value",
+              "type": "VALUE"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "Group Output",
+          "type": "NodeGroupOutput",
+          "inputs": [
+            {
+              "identifier": "Socket_1",
+              "name": "Socket_1",
+              "type": "GEOMETRY"
+            }
+          ],
+          "outputs": [],
+          "parameters": {
+            "is_active_output": true
+          }
+        }
+      ],
+      "links": [
+        {
+          "from_node": "A",
+          "from_socket": "Value",
+          "to_node": "B",
+          "to_socket": "Value",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "B",
+          "from_socket": "Value",
+          "to_node": "A",
+          "to_socket": "Value",
+          "muted": false,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "G0",
+  "trees": [
+    {
+      "name": "G0",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G1"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G1",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G2"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G2",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G3"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G3",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G4"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G4",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G5"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G5",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G6"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G6",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G7"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G7",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G8"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G8",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [
+        {
+          "id": "Call",
+          "type": "GeometryNodeGroup",
+          "inputs": [],
+          "outputs": [],
+          "parameters": {},
+          "group_tree": "G9"
+        }
+      ],
+      "links": []
+    },
+    {
+      "name": "G9",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": true,
+      "interface": [],
+      "nodes": [],
+      "links": []
+    }
+  ]
+}

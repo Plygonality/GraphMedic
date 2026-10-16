@@ -1,0 +1,145 @@
+{
+  "format": "blender.geometry_nodes.capture",
+  "format_version": 1,
+  "application": {
+    "name": "Blender",
+    "version": "4.5.14",
+    "verified": false
+  },
+  "root": "Main",
+  "trees": [
+    {
+      "name": "Main",
+      "bl_idname": "GeometryNodeTree",
+      "kind": "geometry",
+      "is_group": false,
+      "interface": [
+        {
+          "identifier": "Socket_0",
+          "name": "Geometry",
+          "in_out": "INPUT",
+          "type": "NodeSocketGeometry"
+        },
+        {
+          "identifier": "Socket_1",
+          "name": "Geometry",
+          "in_out": "OUTPUT",
+          "type": "NodeSocketGeometry"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "Group Input",
+          "type": "NodeGroupInput",
+          "inputs": [],
+          "outputs": [
+            {
+              "identifier": "Socket_0",
+              "name": "Socket_0",
+              "type": "GEOMETRY"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "Group Output",
+          "type": "NodeGroupOutput",
+          "inputs": [
+            {
+              "identifier": "Socket_1",
+              "name": "Socket_1",
+              "type": "GEOMETRY"
+            }
+          ],
+          "outputs": [],
+          "parameters": {
+            "is_active_output": true
+          }
+        },
+        {
+          "id": "Realize",
+          "type": "GeometryNodeRealizeInstances",
+          "inputs": [
+            {
+              "identifier": "Geometry",
+              "name": "Geometry",
+              "type": "GEOMETRY"
+            },
+            {
+              "identifier": "Selection",
+              "name": "Selection",
+              "type": "BOOLEAN",
+              "default": true
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Geometry",
+              "name": "Geometry",
+              "type": "GEOMETRY"
+            }
+          ],
+          "parameters": {}
+        },
+        {
+          "id": "Instance",
+          "type": "GeometryNodeInstanceOnPoints",
+          "inputs": [
+            {
+              "identifier": "Points",
+              "name": "Points",
+              "type": "GEOMETRY"
+            },
+            {
+              "identifier": "Instance",
+              "name": "Instance",
+              "type": "GEOMETRY"
+            }
+          ],
+          "outputs": [
+            {
+              "identifier": "Instances",
+              "name": "Instances",
+              "type": "GEOMETRY"
+            }
+          ],
+          "parameters": {}
+        }
+      ],
+      "links": [
+        {
+          "from_node": "Group Input",
+          "from_socket": "Socket_0",
+          "to_node": "Realize",
+          "to_socket": "Geometry",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "Realize",
+          "from_socket": "Geometry",
+          "to_node": "Instance",
+          "to_socket": "Points",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "Group Input",
+          "from_socket": "Socket_0",
+          "to_node": "Instance",
+          "to_socket": "Instance",
+          "muted": false,
+          "valid": true
+        },
+        {
+          "from_node": "Instance",
+          "from_socket": "Instances",
+          "to_node": "Group Output",
+          "to_socket": "Socket_1",
+          "muted": false,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}
