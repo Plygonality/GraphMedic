@@ -67,6 +67,12 @@ Every rule also returns a coverage status: `PASS`, `FAIL`, `NOT_APPLICABLE`, or 
 pip install -e ".[dev]"
 ```
 
+Optional, pinned to the 0.1.0 tag:
+
+```bash
+pip install "graphmedic @ git+https://github.com/Plygonality/GraphMedic.git@v0.1.0"
+```
+
 Runtime dependencies: none. Dev extras: pytest, ruff, jsonschema, build. The console script is `graphmedic`. `python -m graphmedic` is the same entry point.
 
 ## Commands
